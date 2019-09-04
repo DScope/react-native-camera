@@ -1050,6 +1050,9 @@ class Camera2 extends CameraViewImpl implements MediaRecorder.OnInfoListener, Me
 
     // Much credit - https://gist.github.com/royshil/8c760c2485257c85a11cafd958548482
     void setFocusArea(float x, float y) {
+        if (mCaptureSession == null) {
+            return;
+        }
         CameraCaptureSession.CaptureCallback captureCallbackHandler = new CameraCaptureSession.CaptureCallback() {
             @Override
             public void onCaptureCompleted(CameraCaptureSession session, CaptureRequest request, TotalCaptureResult result) {
